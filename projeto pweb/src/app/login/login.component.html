@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="emailFormControl">
+        <mat-error *ngIf="emailFormControl.hasError('required')">O email é obrigatório</mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('pattern')">O email deve ter 11 caracteres numéricos antes do @ e 'academico.com' depois</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Senha" [formControl]="senhaFormControl" type="password">
+        <mat-error *ngIf="senhaFormControl.hasError('required')">A senha é obrigatória</mat-error>
+        <mat-error *ngIf="senhaFormControl.hasError('minlength')">A senha deve ter pelo menos 6 caracteres</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="!emailFormControl.valid || !senhaFormControl.valid" (click)="fazerLogin()">Entrar</button>
+    </mat-card-content>
+  </mat-card>
+  
+  
